@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping(value = {"/users", "/"}, produces = MediaType.APPLICATION_JSON_VALUE + "; charset=utf-8")
+@RequestMapping(value =  "/users", produces = MediaType.APPLICATION_JSON_VALUE + "; charset=utf-8")
 public class UserControllers {
 
     @Autowired
@@ -18,19 +18,19 @@ public class UserControllers {
     @GetMapping
     public String getUsers(Model model) {
         model.addAttribute("users", userService.getUsers());
-        return "index";
+        return "User/tableUser";
     }
 
     @GetMapping("/{id}")
     public String getUser(@PathVariable("id") Long id, Model model) {
         model.addAttribute("user", userService.getUser(id));
-        return "oneUser";
+        return "User/oneUser";
     }
 
     @GetMapping("/new")
     public String newPerson(Model model) {
         model.addAttribute("user", new User());
-        return "newUser";
+        return "User/newUser";
     }
 
     @PostMapping
@@ -42,7 +42,7 @@ public class UserControllers {
     @GetMapping("/{id}/edit")
     public String updatePerson(@PathVariable("id") Long id, Model model) {
         model.addAttribute("user", userService.getUser(id));
-        return "updateUser";
+        return "User/updateUser";
     }
 
     @PatchMapping("/{id}")

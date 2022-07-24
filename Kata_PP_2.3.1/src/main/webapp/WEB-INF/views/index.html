@@ -7,63 +7,16 @@
 </head>
 
 <body>
-<h2>Users</h2>
 
-<div th:each="user : ${users}">
 
-    <a th:href="@{/users/{id}(id=${user.getId()})}"
-       th:text="${user.getName()}">user</a>
-
-    or <a th:href="@{/users/{id}/edit(id=${user.getId()})}">Update this user</a>
-
-    <form th:method="DELETE" th:action="@{/users/{id}(id=${user.getId()})}" th:object="${user}">
-        <input type="submit" value="Delete"/>
+<div th:align="center">
+    <h2>Hello Kata</h2>
+    <form th:method="GET" th:action="@{/users}">
+        <input type="submit" value="Go to the solution of the problem 2.3.1"/>
     </form>
-
 </div>
 <br/>
-<hr/>
-<a href="/users/new">Add a user</a>
 <br/>
-<br/>
-<form th:method="DELETE" th:action="@{/users/deleteAll}">
-    <input type="submit" value="Delete all Users"/>
-</form>
 </body>
 
 </html>
-<!--
-
-<table th:border="1" th:cellpadding="5">
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Last Name</th>
-        <th>Age</th>
-        <th>Email</th>
-        <th>Action</th>
-    </tr>
-    <div th:each="user : ${users}">
-        <tr>
-            <td><a th:text="${user.getId()}">Id</a></td>
-            <td><a th:href="@{/users/{id}(id=${user.getId()})}"
-                   th:text="${user.getName()}">name</a></td>
-            <td><a th:text="${user.getLastName()}">last name</a></td>
-            <td><a th:text="${user.getAge()}">age</a></td>
-            <td><a th:text="${user.getEmail()}">email</a></td>
-            <td>
-                <form th:method="GET" th:action="@{/users/{id}/edit(id=${user.getId()})}">
-                    <input type="submit" value="Update"/>
-                </form>
-                <form th:method="delete" th:action="@{/users/{id}(id=${user.getId()})}">
-                    <input type="submit" value="Delete"/>
-                </form>
-                <a th:href="@{/users/delete/{id}(id=${user.getId()})}">Delete</a>
-
-            </td>
-        </tr>
-        <a th:href="@{/users/{id}(id=${user.getId()})}"
-           th:text="${user.getName()}">user</a>
-        or <a th:href="@{/users/{id}/edit(id=${user.getId()})}">Update this user</a>
-    </div>
-</table>-->
