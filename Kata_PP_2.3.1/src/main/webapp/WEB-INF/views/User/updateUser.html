@@ -14,21 +14,25 @@
             <tr>
                 <td><label for="name"> Enter name</label></td>
                 <td><input type="text" th:field="*{name}" id="name"/></td>
+                <td><div style="color: darkred" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div></td>
             </tr>
 
             <tr>
                 <td><label for="lastName"><b>LastName</b></label></td>
                 <td><input type="text" th:field="*{lastName}" id="lastName"/></td>
+                <td><div style="color: darkred" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">lastName error</div></td>
             </tr>
 
             <tr>
                 <td><label for="age"><b>Age</b></label></td>
                 <td><input type="number" th:field="*{age}" id="age"/></td>
+                <td><div style="color: darkred" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">age error</div></td>
             </tr>
 
             <tr>
                 <td><label for="email"><b>E-mail</b></label></td>
                 <td><input type="text" th:field="*{email}" id="email"/></td>
+                <td><div style="color: darkred" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email error</div></td>
             </tr>
 
             <tr>

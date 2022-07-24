@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping(value =  "/users", produces = MediaType.APPLICATION_JSON_VALUE + "; charset=utf-8")
@@ -34,7 +37,11 @@ public class UserControllers {
     }
 
     @PostMapping
-    public String add(@ModelAttribute("user") User user) {
+    public String add(@ModelAttribute("user") @Valid User user,
+                      BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "User/newUser";
+        }
         userService.addUser(user);
         return "redirect:/users";
     }
@@ -46,7 +53,12 @@ public class UserControllers {
     }
 
     @PatchMapping("/{id}")
-    public String createUpdateUser(@PathVariable("id") Long id, @ModelAttribute("user") User user) {
+    public String createUpdateUser(@PathVariable("id") Long id,
+                                   @ModelAttribute("user") @Valid User user,
+                                   BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "User/updateUser";
+        }
         userService.updateUser(id, user);
         return "redirect:/users";
     }
