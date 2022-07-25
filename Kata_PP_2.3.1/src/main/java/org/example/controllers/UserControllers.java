@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value =  "/users", produces = MediaType.APPLICATION_JSON_VALUE + "; charset=utf-8")
+@RequestMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE + "; charset=utf-8")
 public class UserControllers {
 
     @Autowired
